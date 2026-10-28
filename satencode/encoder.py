@@ -3,16 +3,19 @@ from . import primitives
 from . import cardinality
 from . import arithmetic
 from . import bitvector
+from . import finitedomain
 
 
 
 class Encoder:
 
-    def __init__(self):
+    def __init__(self, cache_gates=False):
         self.cnf = CNF()
         self.pool = IDPool()
         self._true = self.pool.id("__TRUE__")
         self.cnf.append([self._true])
+        # Structural hashing: identical and_/or_ calls reuse the same aux variable
+        self.gate_cache = {} if cache_gates else None
 
     add_clause = primitives.add_clause
     add_unit = primitives.add_unit
@@ -50,6 +53,10 @@ class Encoder:
     greater_than_bits = bitvector.greater_than_bits
     less_equal_bits = bitvector.less_equal_bits
     greater_equal_bits = bitvector.greater_equal_bits
+
+    # finite domain
+    transition = finitedomain.transition
+    guarded_transition = finitedomain.guarded_transition
 
     def true(self):
         return self._true
