@@ -218,3 +218,6 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# written by memory_sat.py export_dimacs() during benchmark runs
+*.cnf
