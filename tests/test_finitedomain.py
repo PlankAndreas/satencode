@@ -3,7 +3,6 @@ from itertools import product
 from pysat.solvers import Solver
 
 from satencode.encoder import Encoder
-from satencode.finitedomain import FiniteDomainVariable
 
 
 def solve(enc, assumptions):
@@ -20,7 +19,7 @@ def test_in():
     for values in ([1], [0, 2], [1, 2, 3]):
         for value in domain:
             enc = Encoder()
-            x = FiniteDomainVariable(enc, "x", domain)
+            x = enc.finite_domain_variable("x", domain)
             lit = x.in_(values)
 
             assert solve(enc, assign(x, value) + [lit]) == (value in values)
@@ -33,8 +32,8 @@ def test_transition():
 
     for a, b in product(domain, domain):
         enc = Encoder()
-        x = FiniteDomainVariable(enc, "x", domain)
-        y = FiniteDomainVariable(enc, "y", domain)
+        x = enc.finite_domain_variable("x", domain)
+        y = enc.finite_domain_variable("y", domain)
         enc.transition(x, y, allowed)
 
         expected = a not in allowed or b in allowed[a]
@@ -46,8 +45,8 @@ def test_guarded_transition():
 
     for a, b, g in product(domain, domain, [False, True]):
         enc = Encoder()
-        x = FiniteDomainVariable(enc, "x", domain)
-        y = FiniteDomainVariable(enc, "y", domain)
+        x = enc.finite_domain_variable("x", domain)
+        y = enc.finite_domain_variable("y", domain)
         guard = enc.pool.id("guard")
 
         # from 0: to 1 only if guard holds, to 2 always

@@ -1,12 +1,6 @@
 from pysat.solvers import Solver
 
 from satencode.encoder import Encoder
-from satencode.arithmetic.encodings import (
-    half_adder,
-    full_adder,
-    ripple_carry_adder,
-    binary_incrementer,
-)
 
 
 def test_half_adder():
@@ -16,7 +10,7 @@ def test_half_adder():
     a = enc.pool.id("a")
     b = enc.pool.id("b")
 
-    s, c = half_adder(enc, a, b)
+    s, c = enc.half_adder(a, b)
 
     with Solver(bootstrap_with=enc.cnf) as solver:
 
@@ -46,7 +40,7 @@ def test_full_adder():
     b = enc.pool.id("b")
     cin = enc.pool.id("cin")
 
-    s, cout = full_adder(enc, a, b, cin)
+    s, cout = enc.full_adder(a, b, cin)
 
     with Solver(bootstrap_with=enc.cnf) as solver:
 
@@ -70,7 +64,7 @@ def test_ripple_carry_adder():
     a = [enc.pool.id(("a", i)) for i in range(2)]
     b = [enc.pool.id(("b", i)) for i in range(2)]
 
-    s, carry = ripple_carry_adder(enc, a, b)
+    s, carry = enc.ripple_carry_adder(a, b)
 
     with Solver(bootstrap_with=enc.cnf) as solver:
 
@@ -92,7 +86,7 @@ def test_binary_incrementer():
 
     bits = [enc.pool.id(("x", i)) for i in range(3)]
 
-    out, carry = binary_incrementer(enc, bits)
+    out, carry = enc.binary_incrementer(bits)
 
     with Solver(bootstrap_with=enc.cnf) as solver:
 

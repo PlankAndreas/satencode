@@ -3,9 +3,7 @@ from ortools.sat.python import cp_model
 
 from satencode.csp.constraints import NotEqual
 from satencode.csp.csp_model import CSPModel
-from satencode.csp.direct import csp_direct_encode
 from satencode.encoder import Encoder
-from satencode.cardinality.encodings import exactly_one
 
 
 enc = Encoder()
@@ -16,7 +14,7 @@ if False:
         for i in range(5)
     ]
 
-    exactly_one(enc, x)
+    enc.exactly_one(x)
 
     with Solver(name="cadical195", bootstrap_with=enc.cnf) as solver:
 
@@ -44,7 +42,7 @@ cspmodel.Add(NotEqual(x, y))
 enc = Encoder()
 
 # Compile CSP -> CNF
-sat_vars = csp_direct_encode(enc, cspmodel)
+sat_vars = enc.csp_direct_encode(cspmodel)
 
 
 print("CSP variables:")

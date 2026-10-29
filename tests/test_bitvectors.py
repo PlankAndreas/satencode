@@ -1,12 +1,6 @@
 from pysat.solvers import Solver
 
 from satencode.encoder import Encoder
-from satencode.bitvector.encodings import (
-    equal_bits,
-    not_equal_bits,
-    less_than_bits,
-    greater_than_bits,
-)
 
 
 def bits(value, n):
@@ -22,7 +16,7 @@ def test_equal_bits():
             xb = [enc.pool.id(("x", i)) for i in range(2)]
             yb = [enc.pool.id(("y", i)) for i in range(2)]
 
-            eq = equal_bits(enc, xb, yb)
+            eq = enc.equal_bits(xb, yb)
 
             assumptions = []
 
@@ -47,7 +41,7 @@ def test_not_equal_bits():
             xb = [enc.pool.id(("x", i)) for i in range(2)]
             yb = [enc.pool.id(("y", i)) for i in range(2)]
 
-            neq = not_equal_bits(enc, xb, yb)
+            neq = enc.not_equal_bits(xb, yb)
 
             assumptions = []
 
@@ -72,7 +66,7 @@ def test_less_than_bits():
             xb = [enc.pool.id(("x", i)) for i in range(2)]
             yb = [enc.pool.id(("y", i)) for i in range(2)]
 
-            lt = less_than_bits(enc, xb, yb)
+            lt = enc.less_than_bits(xb, yb)
 
             assumptions = []
 
@@ -97,7 +91,7 @@ def test_greater_than_bits():
             xb = [enc.pool.id(("x", i)) for i in range(2)]
             yb = [enc.pool.id(("y", i)) for i in range(2)]
 
-            gt = greater_than_bits(enc, xb, yb)
+            gt = enc.greater_than_bits(xb, yb)
 
             assumptions = []
 

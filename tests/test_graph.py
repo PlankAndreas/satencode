@@ -2,8 +2,6 @@ import networkx as nx
 from pysat.solvers import Solver
 
 from satencode.encoder import Encoder
-from satencode.graph.variables import vertex_value_variables
-from satencode.graph.coloring import graph_coloring
 
 def test_triangle_two_coloring():
 
@@ -16,9 +14,9 @@ def test_triangle_two_coloring():
 
     enc = Encoder()
 
-    color = vertex_value_variables(enc, G, 2)
+    color = enc.vertex_value_variables(G, 2)
 
-    graph_coloring(enc, G, color)
+    enc.graph_coloring(G, color)
 
     with Solver(bootstrap_with=enc.cnf) as solver:
         assert not solver.solve()
@@ -35,9 +33,9 @@ def test_triangle_three_coloring():
 
     enc = Encoder()
 
-    color = vertex_value_variables(enc, G, 3)
+    color = enc.vertex_value_variables(G, 3)
 
-    graph_coloring(enc, G, color)
+    enc.graph_coloring(G, color)
 
     with Solver(bootstrap_with=enc.cnf) as solver:
         assert solver.solve()

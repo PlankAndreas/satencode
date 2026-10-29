@@ -4,6 +4,8 @@ from . import cardinality
 from . import arithmetic
 from . import bitvector
 from . import finitedomain
+from . import graph
+from . import csp
 
 
 
@@ -57,6 +59,23 @@ class Encoder:
     # finite domain
     transition = finitedomain.transition
     guarded_transition = finitedomain.guarded_transition
+
+    def finite_domain_variable(self, name, domain, literals=None):
+        return finitedomain.FiniteDomainVariable(self, name, domain, literals)
+
+    def finite_domain_family(self, name, indices, domain, literals=None):
+        return finitedomain.FiniteDomainVariableFamily(self, name, indices, domain, literals)
+
+    # graphs
+    vertex_variables = graph.vertex_variables
+    vertex_value_variables = graph.vertex_value_variables
+    edge_variables = graph.edge_variables
+    edge_variable_value = graph.edge_variable_value
+    graph_coloring = graph.graph_coloring
+
+    # csp
+    encode_not_equal = csp.encode_not_equal
+    csp_direct_encode = csp.csp_direct_encode
 
     def true(self):
         return self._true

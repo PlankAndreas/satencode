@@ -1,7 +1,6 @@
 from pysat.solvers import Solver
 
 from satencode.encoder import Encoder
-from satencode.cardinality.encodings import exactly_one
 
 
 def test_exactly_one():
@@ -13,7 +12,7 @@ def test_exactly_one():
         for i in range(5)
     ]
 
-    exactly_one(enc, x)
+    enc.exactly_one(x)
 
     with Solver(name="cadical195", bootstrap_with=enc.cnf) as solver:
 

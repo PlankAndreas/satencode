@@ -1,20 +1,17 @@
-from satencode.primitives.encodings import and_, or_, xor
-
 def half_adder(enc, a, b):
-    s = xor(enc, a, b)
-    c = and_(enc, a, b)
+    s = enc.xor(a, b)
+    c = enc.and_(a, b)
     return s, c
 
 
 def full_adder(enc, a, b, carry_in):
-    ab_xor = xor(enc, a, b)
+    ab_xor = enc.xor(a, b)
 
-    s = xor(enc, ab_xor, carry_in)
+    s = enc.xor(ab_xor, carry_in)
 
-    carry = or_(
-        enc,
-        and_(enc, a, b),
-        and_(enc, ab_xor, carry_in)
+    carry = enc.or_(
+        enc.and_(a, b),
+        enc.and_(ab_xor, carry_in)
     )
 
     return s, carry
@@ -27,7 +24,7 @@ def ripple_carry_adder(enc, a_bits, b_bits):
     carry = enc.false()  # Initial carry is 0
 
     for i in range(n):
-        s, carry = full_adder(enc, a_bits[i], b_bits[i], carry)
+        s, carry = enc.full_adder(a_bits[i], b_bits[i], carry)
         sum_bits.append(s)
 
     return sum_bits, carry
@@ -37,8 +34,8 @@ def binary_incrementer(enc, bits):
     carry = enc.true()
 
     for bit in bits:
-        s = xor(enc, bit, carry)
-        carry = and_(enc, bit, carry)
+        s = enc.xor(bit, carry)
+        carry = enc.and_(bit, carry)
         result.append(s)
 
     return result, carry
@@ -48,8 +45,8 @@ def binary_decrementer(enc, bits):
     borrow = enc.true()
 
     for bit in bits:
-        diff = xor(enc, bit, borrow)
-        borrow = and_(enc, -bit, borrow)
+        diff = enc.xor(bit, borrow)
+        borrow = enc.and_(-bit, borrow)
         result.append(diff)
 
     return result, borrow
@@ -61,7 +58,7 @@ def binary_multiplier(enc, a_bits, b_bits):
 
     for i in range(m):
         # Create partial product for b_bits[i]
-        partial_product = [and_(enc, a_bit, b_bits[i]) for a_bit in a_bits]
+        partial_product = [enc.and_(a_bit, b_bits[i]) for a_bit in a_bits]
         # Shift the partial product by i positions
         shifted_partial_product = (
             [enc.false()] * i
@@ -69,6 +66,6 @@ def binary_multiplier(enc, a_bits, b_bits):
             + [enc.false()] * (n + m - i - len(partial_product))
         )
         # Add the shifted partial product to the current product
-        product_bits, _ = ripple_carry_adder(enc, product_bits, shifted_partial_product)
+        product_bits, _ = enc.ripple_carry_adder(product_bits, shifted_partial_product)
 
     return product_bits

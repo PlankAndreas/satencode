@@ -39,7 +39,7 @@ def less_than_bits(enc, x_bits, y_bits):
 
     # If the most significant bits are equal, compare the remaining bits
     equal_msb = enc.iff(msb_x, msb_y)
-    less_than_remaining = less_than_bits(enc, x_bits[:-1], y_bits[:-1])
+    less_than_remaining = enc.less_than_bits(x_bits[:-1], y_bits[:-1])
 
     # If the most significant bits are not equal, check if x < y based on the MSB
     less_than_msb = enc.and_(enc.not_(msb_x), msb_y)
@@ -48,16 +48,16 @@ def less_than_bits(enc, x_bits, y_bits):
 
 def greater_than_bits(enc, x_bits, y_bits):
 
-    return less_than_bits(enc, y_bits, x_bits)
+    return enc.less_than_bits(y_bits, x_bits)
 
 def less_equal_bits(enc, x, y):
     return enc.or_(
-        less_than_bits(enc, x, y),
-        equal_bits(enc, x, y)
+        enc.less_than_bits(x, y),
+        enc.equal_bits(x, y)
     )
 
 def greater_equal_bits(enc, x, y):
     return enc.or_(
-        greater_than_bits(enc, x, y),
-        equal_bits(enc, x, y)
+        enc.greater_than_bits(x, y),
+        enc.equal_bits(x, y)
     )

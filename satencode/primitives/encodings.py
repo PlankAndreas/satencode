@@ -105,31 +105,31 @@ def not_(enc, lit):
 
 def implies(enc, a, b):
     # a implies b is equivalent to (not a) or b
-    return or_(enc, not_(enc, a), b)
+    return enc.or_(enc.not_(a), b)
 
 def iff(enc, a, b):
     # a iff b is equivalent to not (a xor b)
-    return not_(enc, xor(enc, a, b))
+    return enc.not_(enc.xor(a, b))
 
 def xor(enc, a, b):
     # a xor b is equivalent to (a and not b) or (not a and b)
-    return or_(enc, and_(enc, a, not_(enc, b)), and_(enc, not_(enc, a), b))
+    return enc.or_(enc.and_(a, enc.not_(b)), enc.and_(enc.not_(a), b))
 
 def nand(enc, a, b):
     # a nand b is equivalent to not (a and b)
-    return not_(enc, and_(enc, a, b))
+    return enc.not_(enc.and_(a, b))
 
 def nor(enc, a, b):
     # a nor b is equivalent to not (a or b)
-    return not_(enc, or_(enc, a, b))    
+    return enc.not_(enc.or_(a, b))    
 
 def mux(enc, sel, a, b):
     # Multiplexer: if sel is True, return a; else return b
-    return or_(enc, and_(enc, sel, a), and_(enc, not_(enc, sel), b))
+    return enc.or_(enc.and_(sel, a), enc.and_(enc.not_(sel), b))
 
 def majority(enc, a, b, c):
     # Majority function: returns True if at least two of the inputs are True
-    return or_(enc, and_(enc, a, b), and_(enc, a, c), and_(enc, b, c))
+    return enc.or_(enc.and_(a, b), enc.and_(a, c), enc.and_(b, c))
 
 
 

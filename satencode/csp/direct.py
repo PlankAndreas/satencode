@@ -1,4 +1,3 @@
-from satencode.cardinality.encodings import at_most_one, exactly_one
 from satencode.csp.constraints import NotEqual
 
 def encode_not_equal(enc, sat_vars, constraint):
@@ -36,13 +35,13 @@ def csp_direct_encode(enc, model):
 
     # Every CSP variable takes exactly one value
     for var in model.variables:
-        exactly_one(enc, sat_vars[var].values())
+        enc.exactly_one(sat_vars[var].values())
 
 
     # Binary constraints
     for c in model.constraints:
 
         if isinstance(c, NotEqual):
-            encode_not_equal(enc, sat_vars, c)
+            enc.encode_not_equal(sat_vars, c)
     return sat_vars
 

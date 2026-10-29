@@ -1,10 +1,3 @@
-
-
-from satencode.graph.variables import vertex_value_variables
-from satencode.cardinality.encodings import exactly_one
-from satencode.encoder import Encoder
-
-
 def graph_coloring(enc, G, color):
     """
     Add graph coloring constraints.
@@ -17,7 +10,7 @@ def graph_coloring(enc, G, color):
 
     # Every vertex gets exactly one color
     for v in G.nodes:
-        exactly_one(enc, color[v])
+        enc.exactly_one(color[v])
 
     # Adjacent vertices may not share a color
     k = len(next(iter(color.values())))
