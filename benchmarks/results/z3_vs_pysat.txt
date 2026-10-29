@@ -1,0 +1,42 @@
+
+### 2x2 ions3 seq3  arch=(2, 2, 1, 1) ions=3 gates=3
+  z3         T*=8        393 assertions  encode    0.39s  solve    0.04s  | search total      1.3s
+  manual     T*=8      12104 clauses     encode    0.10s  solve    0.01s  | search total      0.5s
+  primitive  T*=8      10425 clauses     encode    0.11s  solve    0.01s  | search total      0.5s
+  highlevel  T*=8       9060 clauses     encode    0.05s  solve    0.01s  | search total      0.3s
+  Z3 solution accepted by high-level CNF: True
+
+### 2x2 ions3 tuples  arch=(2, 2, 1, 1) ions=3 gates=4
+  z3         T*=11       562 assertions  encode    0.40s  solve    0.04s  | search total      2.5s
+  manual     T*=11     17946 clauses     encode    0.16s  solve    0.02s  | search total      0.9s
+  primitive  T*=11     15547 clauses     encode    0.12s  solve    0.01s  | search total      0.8s
+  highlevel  T*=11     13597 clauses     encode    0.10s  solve    0.01s  | search total      0.5s
+  Z3 solution accepted by high-level CNF: True
+
+### 2x2 chain2 ions3  arch=(2, 2, 2, 2) ions=3 gates=3
+  z3         T*=11       761 assertions  encode    0.84s  solve    0.09s  | search total      3.9s
+  manual     T*=11     23790 clauses     encode    0.23s  solve    0.03s  | search total      1.4s
+  primitive  T*=11     20731 clauses     encode    0.19s  solve    0.02s  | search total      1.2s
+  highlevel  T*=11     18991 clauses     encode    0.10s  solve    0.02s  | search total      0.7s
+  Z3 solution accepted by high-level CNF: True
+
+### 3x3 ions4 qft-ish  arch=(3, 3, 1, 1) ions=4 gates=5
+  z3         T*=15      1684 assertions  encode    2.23s  solve    0.26s  | search total     18.2s
+  manual     T*=15    126580 clauses     encode    0.84s  solve    0.14s  | search total      7.3s
+  primitive  T*=15    114373 clauses     encode    0.76s  solve    0.11s  | search total      6.9s
+  highlevel  T*=15    101493 clauses     encode    0.53s  solve    0.13s  | search total      4.5s
+  Z3 solution accepted by high-level CNF: True
+
+### full_register_access  arch=(3, 3, 1, 1) ions=6 gates=6
+  z3         T*=16      2417 assertions  encode    4.97s  solve    0.63s  | search total     40.4s
+  manual     T*=16    265110 clauses     encode    1.68s  solve    0.43s  | search total     15.9s
+  primitive  T*=16    245491 clauses     encode    2.20s  solve    0.30s  | search total     18.2s
+  highlevel  T*=16    217591 clauses     encode    1.33s  solve    0.43s  | search total     13.7s
+  Z3 solution accepted by high-level CNF: True
+
+### qft_05  arch=(3, 3, 1, 1) ions=6 gates=15
+  z3         T*=26      4209 assertions  encode   18.11s  solve    6.35s  | search total    212.3s
+  manual     T*=26    584333 clauses     encode    3.40s  solve    2.85s  | search total     65.2s
+  primitive  T*=26    551634 clauses     encode    3.50s  solve    4.86s  | search total     62.2s
+  highlevel  T*=26    505134 clauses     encode    2.19s  solve    2.36s  | search total     47.3s
+  Z3 solution accepted by high-level CNF: True

@@ -1,0 +1,12 @@
+
+### full_register_access  (T* = 16)
+  highlevel          T=15: UNSAT encode=0.84 solve=0.24 [3s wall]  |  T=16: SAT encode=1.00 solve=0.32 [3s wall]
+  cpm-bool/pindakaas T=15: UNSAT encode=3.71 solve=0.13 [5s wall]  |  T=16: SAT encode=4.29 solve=0.23 [6s wall]
+  cpm-int/pindakaas  T=15: UNSAT encode=8.39 solve=7.07 [17s wall]  |  T=16: SAT encode=12.49 solve=11.11 [26s wall]
+  cpm-int/cp-sat     T=15: UNSAT encode=3.96 solve=1.58 [7s wall]  |  T=16: SAT encode=4.41 solve=2.94 [9s wall]
+
+### qft_05  (T* = 26)
+  highlevel          T=25: UNSAT encode=2.27 solve=3.60 [8s wall]  |  T=26: SAT encode=2.25 solve=2.40 [6s wall]
+  cpm-bool/pindakaas T=25: UNSAT encode=16.48 solve=4.08 [22s wall]  |  T=26: ERROR (no result) [19s wall]
+  cpm-int/pindakaas  T=25: UNSAT encode=26.59 solve=20.21 [49s wall]  |  T=26: SAT encode=31.40 solve=14.45 [48s wall]
+  cpm-int/cp-sat     T=25: UNSAT encode=13.05 solve=6.06 [21s wall]  |  T=26: SAT encode=14.86 solve=8.00 [25s wall]

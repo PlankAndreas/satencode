@@ -1,0 +1,40 @@
+
+### 2x2 ions3 seq3  arch=(2, 2, 1, 1) ions=3 gates=3
+  highlevel          T*=8       9060 clauses     encode    0.04s  solve    0.01s  | search total      0.2s
+  cpm-bool/pindakaas T*=8        372 cpm-cons    encode    0.27s  solve    0.00s  | search total      1.0s
+  cpm-int/pindakaas  T*=8        351 cpm-cons    encode    0.62s  solve    0.01s  | search total      2.5s
+  cpm-int/cp-sat     T*=8        351 cpm-cons    encode    0.29s  solve    0.04s  | search total      1.3s
+  cpm-bool/pindakaas solution accepted by high-level CNF: True
+  cpm-int/pindakaas solution accepted by high-level CNF: True
+  cpm-int/cp-sat solution accepted by high-level CNF: True
+
+### 2x2 ions3 tuples  arch=(2, 2, 1, 1) ions=3 gates=4
+  highlevel          T*=11     13597 clauses     encode    0.07s  solve    0.01s  | search total      0.5s
+  cpm-bool/pindakaas T*=11       532 cpm-cons    encode    0.46s  solve    0.00s  | search total      2.7s
+  cpm-int/pindakaas  T*=11       502 cpm-cons    encode    0.91s  solve    0.02s  | search total      4.8s
+  cpm-int/cp-sat     T*=11       502 cpm-cons    encode    0.52s  solve    0.12s  | search total      2.8s
+  cpm-bool/pindakaas solution accepted by high-level CNF: True
+  cpm-int/pindakaas solution accepted by high-level CNF: True
+  cpm-int/cp-sat solution accepted by high-level CNF: True
+
+### 2x2 chain2 ions3  arch=(2, 2, 2, 2) ions=3 gates=3
+  highlevel          T*=11     18991 clauses     encode    0.10s  solve    0.02s  | search total      0.6s
+  cpm-bool/pindakaas T*=11       731 cpm-cons    encode    0.67s  solve    0.00s  | search total      3.8s
+  cpm-int/pindakaas  T*=11       701 cpm-cons    encode    1.50s  solve    0.13s  | search total      9.1s
+  cpm-int/cp-sat     T*=11       701 cpm-cons    encode    0.76s  solve    0.21s  | search total      4.1s
+  cpm-bool/pindakaas solution accepted by high-level CNF: True
+  cpm-int/pindakaas solution accepted by high-level CNF: True
+  cpm-int/cp-sat solution accepted by high-level CNF: True
+
+### 3x3 ions4 qft-ish  arch=(3, 3, 1, 1) ions=4 gates=5
+  highlevel          T*=15    101493 clauses     encode    0.52s  solve    0.14s  | search total      4.5s
+  cpm-bool/pindakaas T*=15      1628 cpm-cons    encode    2.53s  solve    0.05s  | search total     18.1s
+  cpm-int/pindakaas  T*=15      1572 cpm-cons    encode    5.29s  solve    1.12s  | search total     42.5s
+  cpm-int/cp-sat     T*=15      1572 cpm-cons    encode    2.24s  solve    1.86s  | search total     21.0s
+  cpm-bool/pindakaas solution accepted by high-level CNF: True
+  cpm-int/pindakaas solution accepted by high-level CNF: True
+  cpm-int/cp-sat solution accepted by high-level CNF: True
+
+### full_register_access  arch=(3, 3, 1, 1) ions=6 gates=6
+  highlevel          T*=16    217591 clauses     encode    0.94s  solve    0.35s  | search total      9.7s
+  cpm-bool/pindakaas T*=16      2327 cpm-cons    encode    5.17s  solve    0.26s  | search total     37.9s
